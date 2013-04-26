@@ -1,6 +1,6 @@
 {
   "name": "impromptu-system",
-  "description": "System commands for Impromptu.",
+  "description": "A system module for Impromptu.",
   "version": "0.1.0",
   "homepage": "http://impromptu.sh/",
   "author": "Impromptu Team (http://impromptu.sh/)",
@@ -27,6 +27,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "coffee-script": "~1.6.2",
     "mocha": "~1.8.2",
     "should": "~1.2.2"
   },
