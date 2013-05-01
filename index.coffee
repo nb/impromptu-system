@@ -1,19 +1,24 @@
-module.exports = (Impromptu) ->
-  @register 'pwd', ->
-    process.env.PWD
+module.exports = (Impromptu, system) ->
+  @register 'pwd',
+    update: ->
+      process.env.PWD
 
-  @register 'prettyPwd', ->
-    cwd = process.env.PWD
-    if cwd.indexOf process.env.HOME == 0
-      cwd = '~' + cwd.slice process.env.HOME.length
-    cwd
+  @register 'prettyPwd',
+    update: ->
+      cwd = process.env.PWD
+      if cwd.indexOf process.env.HOME == 0
+        cwd = '~' + cwd.slice process.env.HOME.length
+      cwd
 
-  @register 'user', (done) ->
-    @exec 'whoami', done
+  @register 'user',
+    update: (done) ->
+      @exec 'whoami', done
 
-  @register 'host', (done) ->
-    @exec 'hostname', done
+  @register 'host',
+    update: (done) ->
+      @exec 'hostname', done
 
-  @register 'shortHost', (done) ->
-    @get 'host', (err, host) ->
-      done err, host.split('.', 1)[0]
+  @register 'shortHost',
+    update: (done) ->
+      system.host (err, host) ->
+        done err, host.split('.', 1)[0]
