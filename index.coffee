@@ -6,7 +6,7 @@ module.exports = (Impromptu, register, system) ->
   register 'prettyPwd',
     update: ->
       cwd = process.env.PWD
-      if cwd.indexOf process.env.HOME == 0
+      if cwd.indexOf(process.env.HOME) == 0
         cwd = '~' + cwd.slice process.env.HOME.length
       cwd
 
